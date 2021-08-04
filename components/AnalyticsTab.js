@@ -19,7 +19,11 @@ const AnalyticsTab=()=>{
       activeBackgroundColor:'rgb(184,184,243)',
       activeTintColor: "white",
       inactiveTintColor: "#222222",
-      floating:true
+      floating:true,
+      labelStyle: { textTransform: "none", },
+      style: {
+        fontFamily:"NunitoSans_700Bold"
+      },
     }}
 
   
@@ -36,11 +40,13 @@ const AnalyticsTab=()=>{
                 color={color}
             />
         )
+        
       }}  
       
       name="Home" component={HomeScreen} />
       
         <Tab.Screen
+        
          options={{
         tabBarIcon: ({ focused, color, size }) => (
             <Ionicons

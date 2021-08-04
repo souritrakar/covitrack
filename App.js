@@ -10,89 +10,33 @@ import HomeScreen from "./screens/HomeScreen"
 import NavContainer from './screens/NavContainer';
 import { Ionicons } from '@expo/vector-icons'; 
 import { Icon } from 'react-native-elements'
+import BlogPost from './screens/BlogPost';
+import AnimatedSplash from "react-native-animated-splash-screen";
+import AppWrapper from './AppWrapper';
+ 
 
-
-const Stack= createStackNavigator()
-
-
-function MyStack(props){
-  return(
-    <Stack.Navigator
-    screenOptions={{
-      headerStyle:{
-        backgroundColor:'#E2E2E2',
-        height:Dimensions.get("window").height/13,
-        
-      },
-     
-      
-      headerTintColor:'black',
-      
-      headerTitleStyle:{
-        fontWeight:"900",
-        fontFamily:"NunitoSans_700Bold",
-        alignSelf:"center"
-        
-      }
-    }}
-    >
-      <Stack.Screen
-       name="WelcomeScreen"
-  
-       component={WelcomeScreen}
-       options={{headerShown: false, headerTitleAlign:"center"}}
-       
-       />
-  
-  
-          <Stack.Screen
-       name="HomeScreen"
-  
-       component={HomeScreen}
-       options={{title:'Home', headerTitleAlign:"center"}}/>
-  
-          <Stack.Screen
-       name="NewsScreen"
-  
-       component={CovidNews}
-       options={{title:'Latest News', headerTitleAlign:"center"}}/>
-
-
-        <Stack.Screen
-       name="VaccineScreen"
-  
-       component={Vaccine}
-       
-       options={{title:'Vaccination Stats',headerLeft:null, headerTitleAlign:"center"  }}
-
-       />
-
-        
-        <Stack.Screen
-       name="NavContainer"
-  
-       component={NavContainer}
-       options={{ title:"CoviMate",headerLeft:null, headerTitleAlign:"center",  headerLeft: () => (
-         <View>
-        <Ionicons name="menu"  size={50} color="black" />
-        </View>
-      ), }}
-
-       />
-         
-
-  
-      </Stack.Navigator>
-  )
-  
-}
 export default function App(props) {
-  return (
-    <NavigationContainer>
-      <MyStack navigation={props.navigation} />
-      </NavigationContainer>
-      
+  // d
+const [loaded, setLoaded] = React.useState(false)
+React.useEffect(()=>{
+  setInterval(function(){
+    setLoaded(true)
+  } , 5000)
+})
 
+  return (
+  
+      <AnimatedSplash
+        translucent={true}
+        isLoaded={loaded}
+        logoImage={require("./assets/logocovid.png")}
+        backgroundColor={"#262626"}
+        logoHeight={150}
+        logoWidth={150}
+      >
+      <AppWrapper/>
+      </AnimatedSplash>
+ 
   );
 }
 
